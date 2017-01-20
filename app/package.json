@@ -1,0 +1,25 @@
+{
+  "name": "nodeduck",
+  "version": "1.0.0",
+  "description": "Homework for Summer @Vincit 2017",
+  "main": "server.js",
+  "scripts": {
+    "start": "PORT=8081 node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maszaa/nodeduck.git"
+  },
+  "license": "BSD-3-Clause",
+  "author": "Samuli Kohomäki",
+  "dependencies": {
+    "body-parser": "1.15.2",
+    "express": "4.14.0",
+    "js-file-req": "^1.11.0",
+    "knex": "^0.12.6",
+    "objection": "^0.6.2",
+    "pug": "^2.0.0-beta6",
+    "pug-bootstrap": "0.0.11",
+    "sqlite3": "^3.1.8"
+  }
+}
