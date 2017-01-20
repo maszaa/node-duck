@@ -4,7 +4,6 @@ module.exports = function(app, models) {
       .query()
       .then(function(species) {
         res.render('species', {title: "DucketiDuck", pageTitle: "Duck species", message: "List of duck species available", species: species});
-      })
-
+      });
   });
 }

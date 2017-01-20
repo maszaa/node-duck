@@ -1,0 +1,30 @@
+include base
+  .container
+    h3= pageTitle
+    p= message
+    p
+      a.text-danger(href='/sighting/new') Add new sighting
+
+    table.table.table-bordered
+      thead
+        tr
+          th= "Species"
+          th= "Description"
+          th= "Datetime"
+          th= "Count"
+          th
+          th
+          th
+      tbody
+        each sighting in sightings
+          tr
+            td= sighting.species
+            td= sighting.description
+            td= sighting.dateTime
+            td= sighting.count
+            td
+              a.text-information(href='/sighting/' + sighting.id) Explore
+            td
+              a.text-warning(href='/sighting/' + sighting.id + '/edit') Edit
+            td
+              a.text-danger(href='/sighting/' + sighting.id + '/delete') Delete
