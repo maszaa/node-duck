@@ -1,0 +1,10 @@
+include base
+  .container
+    h3= pageTitle
+    p= message
+
+    table.table
+      tbody
+        each duck in species
+          tr
+            td= duck.name

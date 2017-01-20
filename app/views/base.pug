@@ -1,0 +1,18 @@
+extends ../node_modules/pug-bootstrap/_bootstrap
+append styles
+	// Custom styles for this template
+	link(href='../css/jumbotron-narrow.css', rel='stylesheet')
+block body
+	.container
+		.header.clearfix
+			nav
+				ul.nav.nav-pills.pull-right
+					li(role='presentation')
+						a.text-danger(href='/') Home
+					li(role='presentation')
+						a.text-danger(href='/species') Species
+					li(role='presentation')
+						a.text-danger(href='/sightings') Sightings
+					li(role='presentation')
+						a.text-danger(href='/reports') Reports
+			h3.text-muted DucketiDuck
