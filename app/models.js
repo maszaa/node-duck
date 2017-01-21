@@ -3,14 +3,14 @@ module.exports = function(Model) {
     Model.apply(this, arguments);
   }
 
-  Species.tableName = 'Species';
+  Species.tableName = 'species';
   Model.extend(Species);
 
   function Sighting() {
     Model.apply(this, arguments);
   }
 
-  Sighting.tableName = 'Sighting';
+  Sighting.tableName = 'sighting';
   Model.extend(Sighting);
 
   return {Species: Species, Sighting: Sighting};

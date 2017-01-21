@@ -20,8 +20,8 @@
     "js-file-req": "^1.11.0",
     "knex": "^0.12.6",
     "objection": "^0.6.2",
+    "pg": "^6.1.2",
     "pug": "^2.0.0-beta6",
-    "pug-bootstrap": "0.0.11",
-    "sqlite3": "^3.1.8"
+    "pug-bootstrap": "0.0.11"
   }
 }

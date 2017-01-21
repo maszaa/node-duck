@@ -3,10 +3,10 @@ CREATE TABLE Species(
 );
 
 CREATE TABLE Sighting(
-  id          INTEGER PRIMARY KEY,
-  dateTime    DATETIME NOT NULL,
+  id          SERIAL PRIMARY KEY,
+  dateTime    TIMESTAMP NOT NULL,
   description TEXT NOT NULL,
-  species     REFERENCES Species(name) NOT NULL,
+  species     VARCHAR(64) REFERENCES Species(name) ON DELETE CASCADE,
   count       INTEGER NOT NULL,
   CHECK(count > 0)
 );

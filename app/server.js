@@ -20,11 +20,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Initialize Objection
 var Model = Objection.Model;
 var knex = Knex({
-  client: 'sqlite3',
-  connection: {
-    filename: '../db.sqlite' // edit filename to suit the name of your sqlite db
-  },
-  useNullAsDefault: true
+    client: 'postgres',
+    connection: {
+        host: '127.0.0.1',
+        database: 'ducketiduckdb',
+        user: 'nodeduck',
+        password: 'duckpassu',
+    }
 });
 Model.knex(knex);
 
