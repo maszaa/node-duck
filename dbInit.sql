@@ -3,9 +3,9 @@ CREATE TABLE Species(
 );
 
 CREATE TABLE Sighting(
-  id          SERIAL PRIMARY KEY,
+  id          INTEGER PRIMARY KEY,
   dateTime    DATETIME NOT NULL,
-  description TEXT,
+  description TEXT NOT NULL,
   species     REFERENCES Species(name) NOT NULL,
   count       INTEGER NOT NULL,
   CHECK(count > 0)

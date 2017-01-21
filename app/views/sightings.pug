@@ -13,8 +13,6 @@ include base
           th= "Datetime"
           th= "Count"
           th
-          th
-          th
       tbody
         each sighting in sightings
           tr
@@ -24,7 +22,3 @@ include base
             td= sighting.count
             td
               a.text-information(href='/sighting/' + sighting.id) Explore
-            td
-              a.text-warning(href='/sighting/' + sighting.id + '/edit') Edit
-            td
-              a.text-danger(href='/sighting/' + sighting.id + '/delete') Delete

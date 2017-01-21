@@ -1,0 +1,32 @@
+include base
+  .container
+    h3= pageTitle
+    p= message
+
+    if sighting
+      table.table
+        tbody
+          tr
+            td
+              strong= "Species"
+            td= sighting.species
+          tr
+            td
+              strong= "Description"
+            td= sighting.description
+          tr
+            td
+              strong= "Date and time"
+            td= sighting.dateTime
+          tr
+            td
+              strong= "Count"
+            td= sighting.count
+          tr
+            td
+              strong= "Id"
+            td= sighting.id
+
+      .btn-toolbar
+        a.btn.btn-lg.btn-warning(href='/sighting/' + sighting.id + '/edit', role='button') Edit
+        a.btn.btn-lg.btn-danger(href='/sighting/' + sighting.id + '/delete', role='button') Delete
