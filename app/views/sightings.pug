@@ -5,6 +5,11 @@ include base
     p
       a.text-danger(href='/sighting/new') Add new sighting
 
+    p
+      each message in messages
+        .line
+          strong= message
+
     table.table.table-bordered
       thead
         tr

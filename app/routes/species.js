@@ -1,5 +1,5 @@
 module.exports = function(app, models) {
-  app.get('/species/', function(req, res) {
+  app.get('/species/', function(req, res, next) {
     models.Species
       .query()
       .then(function(species) {

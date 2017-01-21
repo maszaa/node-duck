@@ -1,14 +1,14 @@
 module.exports = function(app, models) {
-  app.get('/sighting/:id', function(req, res) {
+  app.get('/sighting/:id', function(req, res, next) {
     models.Sighting
       .query()
-      .where('id', parseInt(req.params.id))
+      .where('id', req.params.id)
       .then(function(sightings) {
         if (sightings.length === 1) {
           res.render('sighting', {title: 'DucketiDuck', pageTitle: 'Sighting', message: 'Explore, edit or remove sighting', sighting: sightings[0]});
         }
         else {
-          throw "Not found";
+          throw 'Not found';
         }
       })
       .catch(function(error) {
