@@ -1,0 +1,20 @@
+include base
+  .container
+    h3= pageTitle
+    p(style='white-space:pre;')= message
+
+    table.table.table-bordered
+      thead
+        tr
+          td
+            strong= "Parameter"
+          td
+            strong= "Value"
+          td
+            strong= "Description"
+      tbody
+        each report in reports
+          tr
+            td= report.parameter
+            td= report.value
+            td= report.description
