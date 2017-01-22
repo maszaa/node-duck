@@ -2,28 +2,30 @@ include base
   .container
     h3= pageTitle
     p= message
-    p
-      a.text-danger(href='/sighting/new') Add new sighting
 
     p
       each message in messages
         .line
           strong= message
 
-    table.table.table-bordered
-      thead
-        tr
-          th= "Species"
-          th= "Description"
-          th= "Datetime"
-          th= "Count"
-          th
-      tbody
-        each sighting in sightings
+    if sightings
+      p
+        a.text-danger(href='/sighting/new') Add new sighting
+
+      table.table.table-bordered
+        thead
           tr
-            td= sighting.species
-            td= sighting.description
-            td= sighting.datetime
-            td= sighting.count
-            td
-              a.text-information(href='/sighting/' + sighting.id) Explore
+            th= "Species"
+            th= "Description"
+            th= "Datetime"
+            th= "Count"
+            th
+        tbody
+          each sighting in sightings
+            tr
+              td= sighting.species
+              td= sighting.description
+              td= sighting.datetime
+              td= sighting.count
+              td
+                a.text-information(href='/sighting/' + sighting.id) Explore

@@ -1,3 +1,10 @@
+/*
+Main file:
+Require needed components and other files
+Setup and initialize components
+Running the server
+*/
+
 const app = require('express')();
 const express = require("express");
 const bodyParser = require('body-parser');

@@ -3,8 +3,14 @@ include base
     h3= pageTitle
     p= message
 
-    table.table
-      tbody
-        each duck in species
-          tr
-            td= duck.name
+    p
+      each message in messages
+        .line
+          strong= message
+          
+    if species
+      table.table
+        tbody
+          each duck in species
+            tr
+              td= duck.name

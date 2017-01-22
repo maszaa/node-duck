@@ -3,9 +3,10 @@ include base
     h3= pageTitle
     p= message
 
-    form(action="/sighting/" + sighting.id + "/delete", method="post")
-      input(type="hidden", name="id", value=sighting.id)
+    if sighting
+      form(action="/sighting/" + sighting.id + "/delete", method="post")
+        input(type="hidden", name="id", value=sighting.id)
 
-      .btn-toolbar
-        a.btn.btn-warning(href="/sighting/" + sighting.id) Cancel
-        button.btn.btn-danger(type="submit") Delete
+        .btn-toolbar
+          a.btn.btn-warning(href="/sighting/" + sighting.id) Cancel
+          button.btn.btn-danger(type="submit") Delete

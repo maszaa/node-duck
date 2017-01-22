@@ -1,3 +1,7 @@
+/*
+Initialize Species and Sighting models based on the tables in the db
+*/
+
 module.exports = function(Model) {
   function Species() {
     Model.apply(this, arguments);
