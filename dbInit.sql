@@ -8,7 +8,7 @@ CREATE TABLE Sighting(
   description TEXT NOT NULL,
   species     VARCHAR(64) REFERENCES Species(name) ON DELETE CASCADE,
   count       INTEGER NOT NULL,
-  CHECK(count > 0)
+  CHECK(count > 0 AND description NOT LIKE '')
 );
 
 INSERT INTO Species VALUES('mallard');

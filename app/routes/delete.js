@@ -9,7 +9,7 @@ module.exports = function(app, models) {
                                 message: 'Are you sure you want to delete a sighting with id ' + req.params.id + '?', sighting: sightings[0]});
         }
         else {
-          throw 'Not found';
+          throw 'Sighting with id ' + req.params.id + ' was not found';
         }
       })
       .catch(function(error) {
@@ -28,7 +28,7 @@ module.exports = function(app, models) {
           res.redirect('/sightings');
         }
         else {
-          throw 'Not found, not deleted'
+          throw 'Sighting with id ' + req.body.id + ' was not found and not deleted';
         }
       })
       .catch(function(error) {

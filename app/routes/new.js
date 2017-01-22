@@ -17,7 +17,7 @@ module.exports = function(app, models) {
         res.redirect('/sightings');
       })
       .catch(function(error) {
-        req.flash('add', error);
+        req.flash('add', 'Illegal values, check all fields again');
         models.Species
           .query()
           .then(function(species) {

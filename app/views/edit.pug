@@ -1,0 +1,32 @@
+include base
+  .container
+    h3= pageTitle
+    p= message
+
+    p
+      each message in messages
+        .line
+          strong= message
+
+    form(action="/sighting/" + sighting.id + '/edit', method="post")
+      input(type="hidden", name="id", value=sighting.id)
+      .form-group
+        label(for="species") Species
+        select.form-control(name="species", id="species")
+          each duck in species
+            if (sighting.species == duck.name)
+              option(value=duck.name, selected)= duck.name
+            else
+              option(value=duck.name)= duck.name
+      .form-group
+        label(for="description") Description
+        textarea.form-control(id="description", name="description", rows="4")= sighting.description
+      .form-group
+        label(for="datetime") Date and time
+        input.form-control(type="datetime", id="datetime", name="datetime", value=sighting.datetime)
+      .form-group
+        label(for="count") Count
+        input.form-control(type="number", id="count", name="count", value=sighting.count)
+      .button-toolbar
+        a.btn.btn-warning(href="/sightings") Cancel
+        button.btn.btn-danger(type="submit") Update
