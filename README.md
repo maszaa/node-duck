@@ -27,7 +27,7 @@ psql -U nodeduck -h 127.0.0.1 -d ducketiduckdb
 Password for user nodeduck: duckpassu
 ducketiduckdb=> \ir dbInit.sql
 ```
-where `postgres` is the name of the default database.
+where `postgres` is the name of the default database. `\ir dbInit.sql` creates tables and inserts values to those if you opened the connection to database in the `/node-duck` folder.
 
 Install npm packages:
 
