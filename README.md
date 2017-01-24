@@ -54,10 +54,10 @@ where you should replace `<port>` with wanted port number i.e. 3000.
 
 ## Usage
 
-**`/species` lists all available duck species
-**`/sightings` lists all the sightings made
-**`/sighting/new` provides a form to add new sighting
-**`/sighting/<id>` shows information of sighting with id `<id>`
-**`/sighting/<id>/edit` provides a form to edit sighting with id `<id>`
-**`/sighting/<id>/delete` provides a chance to delete sighting with id `<id>`
-**`/reports` tells which kind of reports can be requested
+* `/species` lists all available duck species
+* `/sightings` lists all the sightings made
+* `/sighting/new` provides a form to add new sighting
+* `/sighting/<id>` shows information of sighting with id `<id>`
+* `/sighting/<id>/edit` provides a form to edit sighting with id `<id>`
+* `/sighting/<id>/delete` provides a chance to delete sighting with id `<id>`
+* `/reports` tells which kind of reports can be requested
