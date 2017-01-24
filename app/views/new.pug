@@ -7,7 +7,7 @@ include base
       each message in messages
         .line
           strong= message
-          
+
     if species
       form(action="/sightings", method="post")
         .form-group
@@ -22,7 +22,7 @@ include base
           label(for="description") Description
           textarea.form-control(id="description", name="description", rows="4")= formData.description
         .form-group
-          label(for="datetime") Date and time
+          label(for="datetime") Date and time (YYYY-MM-DD HR:MN:SS)
           input.form-control(type="datetime", id="datetime", name="datetime", value=formData.datetime)
         .form-group
           label(for="count") Count

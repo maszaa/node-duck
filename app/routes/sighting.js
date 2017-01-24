@@ -4,7 +4,7 @@ Handler for GET '/sighting/<id>' urls
 */
 
 module.exports = function(app, models) {
-  app.get('/sighting/:id', function(req, res, next) {
+  app.get('/sighting/:id', function(req, res) {
     models.Sighting
       .query()
       .where('id', req.params.id)
@@ -19,7 +19,8 @@ module.exports = function(app, models) {
       })
       // User queried a sighting that doesn't exist in the database
       .catch(function(error) {
-        res.render('sighting', {title: 'DucketiDuck', pageTitle: 'Sighting', message: 'No sighting with given id!'});
+        req.flash('explore', error);
+        res.redirect('/sightings');
       });
   });
 }

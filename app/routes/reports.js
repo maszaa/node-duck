@@ -5,12 +5,13 @@ Handler for GET '/reports*' urls
 
 module.exports = function(app, models) {
   app.get('/reports', function(req, res) {
+    const parameters = req.query;
 
     // Fetch all sightings which count is more than count
-    if (req.query.count !== undefined) {
+    if (parameters.count !== undefined) {
       models.Sighting
         .query()
-        .where('count', '>', req.query.count)
+        .where('count', '>', parameters.count)
         .then(function(sightings) {
           res.status(200).json(sightings);
         })
@@ -21,13 +22,13 @@ module.exports = function(app, models) {
     }
 
     // Fetch all sightings of species from timeStarting to timeEnding
-    else if (req.query.species !== undefined && req.query.timeStarting !== undefined && req.query.timeEnding !== undefined) {
+    else if (parameters.species !== undefined && parameters.timeStarting !== undefined && parameters.timeEnding !== undefined) {
       models.Sighting
         .query()
         // Working of this clause can depend on the database that is used
-        // For PostgreSQL the timestamp (type of 'datetime') is in form 'YYYY-MM-DD HR:MN:SS' and so are timeStarting and timeEnding
-        .whereBetween('datetime', [req.query.timeStarting, req.query.timeEnding])
-        .andWhere('species', req.query.species)
+        // For PostgreSQL the timestamp (type of 'datetime') is returned in form 'YYYY-MM-DD hh:mm:ss', timeStarting and timeEnding are in same format
+        .whereBetween('datetime', [parameters.timeStarting, parameters.timeEnding])
+        .andWhere('species', parameters.species)
         .then(function(sightings) {
           res.status(200).json(sightings);
         })
@@ -38,13 +39,13 @@ module.exports = function(app, models) {
     }
 
     // Fetch all sightings of a specific month and year
-    else if(req.query.yearMonth !== undefined) {
+    else if(parameters.yearMonth !== undefined) {
       models.Sighting
         .query()
         // Working of this clause can depend on the database that is used
-        // For PostgreSQL there is a to_char(value, format) function
-        // and the timestamp (type of 'datetime') is in form 'YYYY-MM-DD HR:MN:SS' so yeard and month can be extracted like this
-        .whereRaw("to_char(datetime, 'YYYY-MM') = ?", [req.query.yearMonth])
+        // PostgreSQL has a to_char(timestamp, format) function
+        // and the timestamp (type of 'datetime') is returned in form 'YYYY-MM-DD hh:mm:ss', so year and month can be extracted like this
+        .whereRaw("to_char(datetime, 'YYYY-MM') = ?", [parameters.yearMonth])
         .then(function(sightings) {
           res.status(200).json(sightings);
         })
@@ -64,7 +65,7 @@ module.exports = function(app, models) {
                       },
                       {
                         parameter: 'yearMonth',
-                        value: '<yyyy-mm>',
+                        value: '<YYYY-MM>',
                         description: 'All sightings of <mm> (month) of <yyyy> (year)',
                       },
                       {
@@ -74,13 +75,13 @@ module.exports = function(app, models) {
                       },
                       {
                         parameter: 'timeStarting',
-                        value: '<yyyy-mm-dd>+<hr:mn:ss>',
-                        description: 'All sightings of species starting from dd.mm.yyyy hr:mn:ss (day.month.year hours:minutes:seconds)',
+                        value: '<YYYY-MM-DD>+<hh:mm:ss>',
+                        description: 'All sightings of species starting from YYYY-MM-DD hh:mm:ss (year-month-day hours:minutes:seconds)',
                       },
                       {
                         parameter: 'timeEnding',
-                        value: '<yyyy-mm-dd>+<hr:mn:ss>',
-                        description: 'All sightings of species starting from dd.mm.yyyy hr:mn:ss (day.month.year hours:minutes:seconds)'
+                        value: '<YYYY-MM-DD>+<hh:mm:ss>',
+                        description: 'All sightings of species starting from YYYY-MM-DD hh:mm:ss (year-month-day hours:minutes:seconds)'
                       },
                     ];
       res.render('reports', {title: 'DucketiDuck', pageTitle: 'Sighting reports', message: message, reports: reports});

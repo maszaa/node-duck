@@ -22,7 +22,9 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
 }));
-app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 // Initialize Objection
 var Model = Objection.Model;
@@ -30,6 +32,7 @@ var knex = Knex({
     client: 'postgres',
     connection: {
         host: '127.0.0.1',
+        port: '5432',
         database: 'ducketiduckdb',
         user: 'nodeduck',
         password: 'duckpassu',
@@ -52,7 +55,7 @@ const models = require('./models.js')(Model);
 // Require all the route files in /routes
 const routePath = path.join(__dirname, 'routes');
 fs.readdirSync(routePath).forEach(function(file) {
-  if (file.split('.').pop() == "js") {
+  if (file.split('.').pop() === "js") {
     require(path.join(routePath, file))(app, models);
   }
 });

@@ -4,17 +4,17 @@ Handler for GET '/species' url
 */
 
 module.exports = function(app, models) {
-  app.get('/species/', function(req, res, next) {
+  app.get('/species/', function(req, res) {
     models.Species
       .query()
       .orderBy('name')
       .then(function(species) {
-        res.render('species', {title: "DucketiDuck", pageTitle: "Duck species", message: "List of duck species available", species: species, messages: {}});
+        res.render('species', {title: 'DucketiDuck', pageTitle: 'Duck species', message: 'List of duck species available', species: species, messages: {}});
       })
       // Species table is probably dropped or missing
       .catch(function(error) {
         req.flash('edit', 'Database is broken, come back later');
-        res.render('species', {title: "DucketiDuck", pageTitle: "Duck species", message: "List of duck species available", messages: req.flash()});
+        res.render('species', {title: 'DucketiDuck', pageTitle: 'Duck species', message: 'List of duck species available', messages: req.flash()});
       });
   });
 }

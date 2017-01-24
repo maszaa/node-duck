@@ -4,7 +4,7 @@ Handlers for GET and POST '/sighting/<id>/delete' urls
 */
 
 module.exports = function(app, models) {
-  app.get('/sighting/:id/delete', function(req, res, next) {
+  app.get('/sighting/:id/delete', function(req, res) {
     models.Sighting
       .query()
       .where('id', req.params.id)
@@ -19,11 +19,12 @@ module.exports = function(app, models) {
         }
       })
       .catch(function(error) {
-        res.render('delete', {title: 'DucketiDuck', pageTitle: 'Delete sighting', message: 'No sighting with given id!'});
+        req.flash('delete', error);
+        res.redirect('/sightings');
       });
   });
 
-  app.post('/sighting/:id/delete', function(req, res, next) {
+  app.post('/sighting/:id/delete', function(req, res) {
     models.Sighting
       .query()
       .delete()

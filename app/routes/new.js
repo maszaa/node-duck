@@ -5,7 +5,7 @@ Handlers for GET '/sighting/new'
 */
 
 module.exports = function(app, models) {
-  app.get('/sighting/new', function(req, res, next) {
+  app.get('/sighting/new', function(req, res) {
     models.Species
       .query()
       .orderBy('name')
@@ -19,7 +19,7 @@ module.exports = function(app, models) {
       });
   });
 
-  app.post('/sightings', function(req, res, next) {
+  app.post('/sightings', function(req, res) {
     models.Sighting
       .query()
       // Triggers Objection validation which is based on the Sighting table schema
